@@ -12,6 +12,8 @@ RSpec.describe Exercise, type: :model do
     let(:exercise) { Exercise.generate }
     describe 'return generared instance' do
       it { expect(exercise.additions).to all(be_a Addition) }
+      it { expect(exercise.multiplications).to all(be_a Multiplication) }
+      it { expect(exercise.divisions).to all(be_a Division) }
     end
   end
 end

@@ -1,3 +1,54 @@
-<h1>Exercises#new</h1>
 <h2>問題</h2>
+
+<h3>A みとり算 (No.1 〜 No.10)</h3>
+<div class="wrapper-additions">
+<div class="additions">
+  <% @exercise.additions.each.with_index(1) do |addition, qno| %>
+    <% if qno % 5 == 1 %>
+      <div class="subject">
+        <div class="question-no">
+          <div class="inner-center inner-question-no"> No.</div>
+        </div>
+        <% addition.numbers.each.with_index(1) do |number, i| %>
+          <div class="number"><%= i %></div>
+        <% end %>
+        <div class="answer">
+          <div class="inner-answer inner-center">計</div>
+        </div>
+      </div>
+    <% end %>
+    <div class="addition">
+      <div class="question-no">
+        <div class="inner-center inner-question-no"><%= qno %></div>
+      </div>
+      <% addition.numbers.each_with_index do |number, i| %>
+        <div class="number">
+          <% if i == 0 %>
+            <%= number_to_jpy(number, '¥') %>
+          <% else %>
+            <%= number_to_jpy(number) %>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="answer"></div>
+    </div>
+  <% end %>
+  <br style="clear: both"/>
+</div>
+</div>
+
 <h2>解答</h2>
+<div class="wrapper-additions">
+  <div class="answers">
+  <table>
+    <% @exercise.additions.each.with_index(1) do |addition, no| %>
+      <tr>
+        <th><%= no %></th>
+        <td class="number"><%= number_to_jpy(addition.answer, '¥') %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+</div>
+
+<div class"footer"><%= link_to 'Back', root_path %></div>

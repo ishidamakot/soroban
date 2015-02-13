@@ -1,3 +1,89 @@
 // Place all the styles related to the Exercises controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.wrapper-additions {
+  width: 60em;
+  text-align: center;
+}
+.additions {
+  width: 48em;
+  margin: auto;
+  .addition, .subject {
+    float: left;
+    border: solid 1px black;
+    margin-bottom: 6em;
+    .question-no {
+      text-align: center;
+      height: 2em;
+      border-bottom: solid 1px black;
+      position: relative;
+      .inner-question-no {
+        width: 1.5em;
+        height: 1em;
+        line-height: 1em;
+      }
+    }
+    .number {
+      height: 1.5em;
+      position: relative;
+      letter-spacing: 0.1em;
+      .inner-number {
+        width: 1em;
+        height: 1em;
+        line-height: 1em;
+      }
+    }
+    .answer {
+      height: 3em;
+      position: relative;
+      border-top: solid 1px black;
+      .inner-answer {
+        width: 1em;
+        height: 1em;
+        line-height: 1em;
+      }
+    }
+  }
+  .addition {
+    width: 9em;
+    border-left: 0;
+    .number {
+      text-align: right;
+    }
+  }
+  .subject {
+    width: 2em;
+    clear: both;
+    .number {
+      text-align: center;
+    }
+    .answer {
+      text-align: center;
+    }
+  }
+}
+.answers {
+  width: 48em;
+  margin: auto;
+  table {
+    border: 0;
+    border-collapse: collapse;
+  }
+  td, th {
+    border: solid 1px black;
+    height: 1.5em;
+    letter-spacing: 0.1em;
+  }
+  td.number {
+    width: 9em;
+    text-align: right;
+  }
+}
+
+.inner-center {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  margin: auto;
+  padding: 0;
+}
+

@@ -9,9 +9,9 @@ class Exercise
 
   def self.generate
     exercise = self.new
-    additions = 6.times.map { Addition.generate } +
-      4.times.map { Addition.generate include_minus: true }
-    exercise.additions = additions.shuffle
+    exercise.additions = (6.times.map { Addition.generate } +
+      3.times.map { Addition.generate include_minus: true } +
+      [Addition.generate(include_minus: true, minus_answer: true)]).shuffle
     exercise.multiplications.fill { Multiplication.generate }
     exercise.divisions.fill { Division.generate }
     exercise

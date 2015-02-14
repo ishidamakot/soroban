@@ -32,13 +32,32 @@ RSpec.describe Addition, type: :model do
         it { is_expected.to all(satisfy &be_8_digit) }
       end
 
-      describe 'include minus number of 4' do
-        it {
-          nums = Addition.generate(include_minus: true).numbers
-          minus_nums = nums.select{ |num| num < 0 }
-          expect(minus_nums.size).to eq 4
-        }
+      context 'with include minus option' do
+        nums = Addition.generate(include_minus: true).numbers
+        minus_nums = nums.select{ |num| num < 0 }
+        it { expect(minus_nums.size).to eq 4 }
+      end
+
+      context 'with minus answer option' do
+        addition = Addition.generate include_minus: true, minus_answer: true
+        it { expect(addition.answer).to be < 0 }
+      end
+
+      context 'without minus answer option' do
+        additions = 100.times.map { Addition.generate include_minus: true }
+        it { expect(additions).to all(satisfy {|add|add.answer >= 0}) }
       end
     end
   end
+
+  describe '#include_minus?' do
+    let(:nums) { [100] * 10 }
+    subject { addition }
+    it { is_expected.to_not be_include_minus }
+    it {
+      addition.numbers[0] = -100
+      is_expected.to be_include_minus
+    }
+  end
+
 end

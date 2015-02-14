@@ -15,5 +15,8 @@ RSpec.describe Exercise, type: :model do
       it { expect(exercise.multiplications).to all(be_a Multiplication) }
       it { expect(exercise.divisions).to all(be_a Division) }
     end
+
+    describe 'Addition is 6 positive and 4 negative into 1 minus answer' do
+    end
   end
 end

@@ -12,10 +12,18 @@ class Addition
   def self.generate(opts = {})
     if opts[:include_minus]
       nums = 6.times.map { generate_num } + 4.times.map { 0 - generate_num }
-      new(nums.shuffle)
+      if opts[:minus_answer]
+        nums.inject(:+) < 0 ? new(nums.shuffle) : generate(opts)
+      else
+        nums.inject(:+) >= 0 ? new(nums.shuffle) : generate(opts)
+      end
     else
       new(10.times.map { generate_num })
     end 
+  end
+
+  def include_minus?
+    @numbers.select{|num|num < 0}.present?
   end
 
   private

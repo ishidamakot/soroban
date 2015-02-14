@@ -9,8 +9,13 @@ class Addition
     self.numbers.inject(:+)
   end
     
-  def self.generate
-    self.new Array.new(10) { generate_num }
+  def self.generate(opts = {})
+    if opts[:include_minus]
+      nums = 6.times.map { generate_num } + 4.times.map { 0 - generate_num }
+      new(nums.shuffle)
+    else
+      new(10.times.map { generate_num })
+    end 
   end
 
   private

@@ -17,13 +17,28 @@ RSpec.describe Addition, type: :model do
   describe '#generate' do
     let(:addition) { Addition.generate }
     subject { addition }
+
     it { is_expected.to be_is_a(Addition) }
-    describe 'create 10 numbers' do
-      it { expect(addition.numbers.size).to eq 10 }
-      it { expect(addition.numbers).to all(be_a Integer) }
-    end
-    describe 'number is 8 digit' do
-      it { addition.numbers.each { |num| expect(num.to_s.size).to eq 8 } }
+
+    describe 'generated numers' do
+      let(:numbers) { addition.numbers }
+      subject { numbers }
+
+      it { expect(numbers.size).to eq 10 }
+      it { is_expected.to all(be_a Integer) }
+
+      describe 'is 8 digits at all' do
+        be_8_digit = -> num { num.abs.to_s.size == 8 }
+        it { is_expected.to all(satisfy &be_8_digit) }
+      end
+
+      describe 'include minus number of 4' do
+        it {
+          nums = Addition.generate(include_minus: true).numbers
+          minus_nums = nums.select{ |num| num < 0 }
+          expect(minus_nums.size).to eq 4
+        }
+      end
     end
   end
 end

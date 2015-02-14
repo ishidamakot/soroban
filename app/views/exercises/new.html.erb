@@ -23,11 +23,7 @@
       </div>
       <% addition.numbers.each_with_index do |number, i| %>
         <div class="number">
-          <% if i == 0 %>
-            <%= number_to_jpy(number, '¥') %>
-          <% else %>
-            <%= number_to_jpy(number) %>
-          <% end %>
+          <%= number_to_jpy(number) %>
         </div>
       <% end %>
       <div class="answer"></div>

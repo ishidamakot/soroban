@@ -51,3 +51,5 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'guard-rspec', require: false
 end
+
+gem 'foundation-rails'

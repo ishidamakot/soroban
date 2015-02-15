@@ -60,4 +60,9 @@ RSpec.describe Addition, type: :model do
     }
   end
 
+  describe '#minus_answer?' do
+    let(:nums) { [1,1,1,1,1,1,1,1,1,-10] } # sum is -1
+    subject { addition }
+    it { is_expected.to be_minus_answer }
+  end
 end

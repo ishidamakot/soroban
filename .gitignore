@@ -18,3 +18,5 @@
 
 # Ignore gem libraries
 /vendor/bundle
+*.swp
+*.swo
